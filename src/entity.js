@@ -95,4 +95,7 @@ class entity {
   }
 }
 
-module.exports = (name) => new entity(name)
+module.exports = {
+  createEntity: (name) => new entity(name),
+  entity
+}

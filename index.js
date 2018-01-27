@@ -1,2 +1,3 @@
 const fsdb = require('./src/db')
-module.exports = fsdb
+const entity = require('./src/db')
+module.exports = { fsdb, entity }
