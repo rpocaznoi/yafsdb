@@ -1,3 +1,3 @@
-const fsdb = require('./src/db')
-const entity = require('./src/db')
-module.exports = { fsdb, entity }
+const { fsdb, createDb } = require('./src/db')
+const { entity, createEntity } = require('./src/db')
+module.exports = { fsdb, entity, createEntity, createDb }
