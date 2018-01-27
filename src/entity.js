@@ -4,7 +4,8 @@ const fs = require('fs')
 
 class entity {
 
-  constructor(name) {
+  constructor(name, db) {
+    this.db = db
     this.fname = name + '.json'
     if (!fs.existsSync(this.fname)) {
       fs.writeFileSync(this.fname, '[]', 'utf-8')
@@ -96,6 +97,6 @@ class entity {
 }
 
 module.exports = {
-  createEntity: (name) => new entity(name),
+  createEntity: (name, db) => new entity(name, db),
   entity
 }

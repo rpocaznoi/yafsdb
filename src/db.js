@@ -1,5 +1,5 @@
 const fs = require('fs')
-  , {createEntity} = require('./entity')
+  , { createEntity } = require('./entity')
   , _ = require('lodash')
 
 class fsdb {
@@ -8,7 +8,7 @@ class fsdb {
     const { datadir, entities } = options
     this.datadir = datadir
     let optionsEntityNames = [], entityCreatorsMap = {}
-    
+
     if (entities) {
       if (typeof entities === 'array') {
         optionsEntityNames = entities
@@ -25,10 +25,10 @@ class fsdb {
 
     if (allEntityNames.length) {
       allEntityNames.forEach(entity => {
-        if(entityCreatorsMap[entity] && typeof entityCreatorsMap[entity] === 'function') {
-          this[entity] = entityCreatorsMap[entity](`${this.datadir}/${entity}`)
-        }else{
-          this[entity] = createEntity(`${this.datadir}/${entity}`)
+        if (entityCreatorsMap[entity] && typeof entityCreatorsMap[entity] === 'function') {
+          this[entity] = entityCreatorsMap[entity](`${this.datadir}/${entity}`, this)
+        } else {
+          this[entity] = createEntity(`${this.datadir}/${entity}`, this)
         }
       })
     }
@@ -36,7 +36,7 @@ class fsdb {
 
   ensure(entity) {
     if (!this[entity]) {
-      this[entity] = createEntity(`${this.datadir}/${entity}`)
+      this[entity] = createEntity(`${this.datadir}/${entity}`, this)
     }
     return this[entity]
   }
