@@ -1,6 +1,6 @@
 {
   "name": "@rpocaznoi/yafsdb",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Yet another simple json file system db",
   "main": "index.js",
   "scripts": {
