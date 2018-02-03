@@ -89,7 +89,7 @@ class entity {
     const data = JSON.parse(fs.readFileSync(this.fname, 'utf-8'))
       , found = _.filter(data, criterion)
     if (found) {
-      const newData = _.without(data, found)
+      const newData = _.without(data, ...found)
       fs.writeFileSync(this.fname, JSON.stringify(newData))
     }
     return found
